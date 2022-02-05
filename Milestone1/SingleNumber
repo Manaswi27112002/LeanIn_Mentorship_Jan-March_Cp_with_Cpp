@@ -1,0 +1,25 @@
+//CODE:
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        if(nums.size() == 1) return nums[0];
+        map<int, int> mapNum;
+        map<int, int>::iterator it;
+        int ans;
+        for(int i = 0; i < nums.size(); i++){
+            it = mapNum.find(nums[i]);
+            if(it == mapNum.end()){
+                mapNum.insert(pair<int,int>(nums[i], 1));
+            }else{
+                it->second += 1;
+            }
+        } 
+        for(it = mapNum.begin(); it != mapNum.end(); it++){
+            if(it->second == 1){
+                ans = it->first;
+                break;
+            }
+        }
+        return ans;
+    }
+};
