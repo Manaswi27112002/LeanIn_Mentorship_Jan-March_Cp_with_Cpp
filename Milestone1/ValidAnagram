@@ -1,0 +1,15 @@
+//CODE:
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        int len = s.length();
+        int fMap [123] = {0};
+        if (t.length() != len) return false;
+        for (int i = 0; i < len; i++)
+            fMap[int(s[i])]++;
+        for (int i = 0; i < len; i++)
+            if (fMap[int(t[i])]-- == 0) return false;
+        return true;
+        
+    }
+};
